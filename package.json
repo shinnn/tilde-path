@@ -1,0 +1,37 @@
+{
+  "name": "tilde-path",
+  "version": "0.1.0",
+  "description": "Convert a path to an absolute tilde path",
+  "repository": "shinnn/tilde-path",
+  "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+  "scripts": {
+    "pretest": "eslint --fix --config @shinnn/node-legacy index.js test.js",
+    "test": "node --strong_mode --throw-deprecation --track-heap-objects test.js",
+    "coverage": "node --strong_mode node_modules/.bin/istanbul cover --print=both test.js"
+  },
+  "license": "Unlicense",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "file",
+    "path",
+    "resolve",
+    "absolute",
+    "tilde",
+    "tildify",
+    "tildeify",
+    "convert",
+    "shorten",
+    "simplify"
+  ],
+  "dependencies": {
+    "tildify": "~1.2.0"
+  },
+  "devDependencies": {
+    "@shinnn/eslint-config-node-legacy": "~2.0.0",
+    "eslint": "~3.0.1",
+    "istanbul": "~0.4.4",
+    "tape": "~4.6.0"
+  }
+}
