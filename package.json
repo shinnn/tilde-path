@@ -26,12 +26,12 @@
     "simplify"
   ],
   "dependencies": {
-    "tildify": "~1.2.0"
+    "tildify": "^1.2.0"
   },
   "devDependencies": {
-    "@shinnn/eslint-config-node-legacy": "~2.0.0",
-    "eslint": "~3.0.1",
-    "istanbul": "~0.4.4",
-    "tape": "~4.6.0"
+    "@shinnn/eslint-config-node-legacy": "^3.0.0",
+    "eslint": "^3.1.1",
+    "istanbul": "^0.4.4",
+    "tape": "^4.6.0"
   }
 }
