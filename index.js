@@ -1,8 +1,8 @@
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
-var tildify = require('tildify');
+const tildify = require('tildify');
 
 module.exports = function tildePath(filePath) {
   return tildify(path.resolve(filePath));
