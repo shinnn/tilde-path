@@ -1,4 +1,4 @@
-'use strong';
+'use strict';
 
 const os = require('os');
 const path = require('path');
