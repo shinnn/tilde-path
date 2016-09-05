@@ -4,8 +4,8 @@
 [![Build Status](https://travis-ci.org/shinnn/tilde-path.svg?branch=master)](https://travis-ci.org/shinnn/tilde-path)
 [![Build status](https://ci.appveyor.com/api/projects/status/62oanqlwsc3ahwkk?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/tilde-path)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/tilde-path.svg)](https://coveralls.io/r/shinnn/tilde-path)
-[![Dependency Status](https://david-dm.org/shinnn/tilde-path.svg)](https://david-dm.org/shinnn/tilde-path)
-[![devDependency Status](https://david-dm.org/shinnn/tilde-path/dev-status.svg)](https://david-dm.org/shinnn/tilde-path#info=devDependencies)
+[![dependencies Status](https://david-dm.org/shinnn/tilde-path/status.svg)](https://david-dm.org/shinnn/tilde-path)
+[![devDependencies Status](https://david-dm.org/shinnn/tilde-path/dev-status.svg)](https://david-dm.org/shinnn/tilde-path?type=dev)
 
 A [Node](https://nodejs.org/) module to convert a path to an absolute tilde path
 
