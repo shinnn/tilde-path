@@ -4,13 +4,11 @@
 [![Build Status](https://travis-ci.org/shinnn/tilde-path.svg?branch=master)](https://travis-ci.org/shinnn/tilde-path)
 [![Build status](https://ci.appveyor.com/api/projects/status/62oanqlwsc3ahwkk?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/tilde-path)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/tilde-path.svg)](https://coveralls.io/r/shinnn/tilde-path)
-[![dependencies Status](https://david-dm.org/shinnn/tilde-path/status.svg)](https://david-dm.org/shinnn/tilde-path)
-[![devDependencies Status](https://david-dm.org/shinnn/tilde-path/dev-status.svg)](https://david-dm.org/shinnn/tilde-path?type=dev)
 
-A [Node](https://nodejs.org/) module to convert a path to an absolute tilde path
+Resolve a path into an absolute path, using [tilde (`~`)](https://www.gnu.org/software/libc/manual/html_node/Tilde-Expansion.html) if possible
 
 ```javascript
-// On /User/shinnn/project
+// On /Users/shinnn/project
 const tildePath = require('tilde-path');
 
 tildePath('foo'); //=> '~/project/foo'
@@ -34,20 +32,24 @@ const tildePath = require('tilde-path');
 
 ### tildePath(*path*)
 
-*path*: `String`  
-Return: `String`
+*path*: `string`  
+Return: `string`
 
-It converts a given path to an absolute path if it's relative, then converts it to a tilde path.
+On a non-Windows environment,
+
+1. Resolves a given path into an absolute path if it's relative
+2. Replaces the [home directory](https://nodejs.org/api/os.html#os_os_homedir) path with `~`
+
+On Windows, it just calls [`path.win32.resolve`](https://nodejs.org/api/path.html#path_path_resolve_paths) because Windows [doesn't support tilde home path](https://superuser.com/a/60421).
 
 ```javascript
-tildePath('.'); //=> '~/current/path'
-tildePath(''); //=> '~/current/path'
-tildePath('foo/../bar/../////baz/..'); //=> '~/current/path'
+// On POSIX
+tildePath('my/dir'); //=> '~/my/dir'
 
-tildePath('/Users/shinnn/already/absolute'); //=> '~/already/absolute'
-tildePath('/Outside/home/dir'); //=> '/Outside/home/dir'
+// On Windows
+tildePath('my/dir'); //=> 'C:\\Users\\shinnn\\my\\dir'
 ```
 
 ## License
 
-[The Unlicense](./LICENSE)
+[Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed)

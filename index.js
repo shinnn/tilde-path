@@ -1,9 +1,28 @@
 'use strict';
 
-const path = require('path');
+const homedir = require('os').homedir;
+const pathLib = require('path');
 
-const tildify = require('tildify');
+const win32Resolve = pathLib.win32.resolve;
+const posixResolve = pathLib.posix.resolve;
 
-module.exports = function tildePath(filePath) {
-  return tildify(path.resolve(filePath));
+module.exports = function tildePath(path) {
+  if (process.platform === 'win32') {
+    return win32Resolve(path);
+  }
+
+  const home = homedir();
+  path = posixResolve(path);
+
+  if (path === home) {
+    return '~';
+  }
+
+  const homeWithTrailingSlash = `${home}/`;
+
+  if (path.startsWith(homeWithTrailingSlash)) {
+    return path.replace(homeWithTrailingSlash, '~/');
+  }
+
+  return path;
 };
