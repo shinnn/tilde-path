@@ -7,11 +7,7 @@ const pretendPlatform = require('pretend-platform');
 const test = require('tape');
 const tildePath = require('.');
 
-const home = homedir();
-
-process.chdir(home);
-
-test('tildePath() on a non-Windows environment', t => {
+test('tildePath()', t => {
   t.throws(
     () => tildePath(123),
     /^TypeError.*Path must be a string. Received 123/,
@@ -27,13 +23,43 @@ test('tildePath() on a non-Windows environment', t => {
   t.end();
 });
 
-test('tildePath() on a non-Windows environment', t => {
-  pretendPlatform('aix');
+test('tildePath() on a Windows environment', t => {
+  pretendPlatform('win32');
 
   t.equal(
-    tildePath(posix.join(home, 'foo/bar')),
+    tildePath('foo'),
+    win32.resolve('foo'),
+    'should make a given path absolute without using tilde.'
+  );
+
+  t.end();
+});
+
+test('tildePath() on a non-Windows environment', t => {
+  pretendPlatform('aix');
+  process.chdir(homedir());
+
+  t.equal(
+    tildePath('baz'),
+    '~/baz',
+    'should convert a relative path to an absolute tilde path.'
+  );
+
+  t.equal(
+    tildePath(''),
+    '~',
+    'should accept an empty string.'
+  );
+
+  const newHome = '/Users/__test__';
+
+  process.env.HOME = newHome;
+  process.env.USERPROFILE = newHome;
+
+  t.equal(
+    tildePath(posix.join(`${newHome}/foo/bar`)),
     '~/foo/bar',
-    'should convert a path to a tilde path.'
+    'should convert an absolute path to a tilde path.'
   );
 
   t.equal(
@@ -43,33 +69,9 @@ test('tildePath() on a non-Windows environment', t => {
   );
 
   t.equal(
-    tildePath(posix.join(`${home}abcdef`)),
-    `${home}abcdef`,
+    tildePath(`${homedir()}abcdef`),
+    `${homedir()}abcdef`,
     'should not modify the path if it\'s owned by another user.'
-  );
-
-  t.equal(
-    tildePath('baz'),
-    '~/baz',
-    'should support a relative path.'
-  );
-
-  t.equal(
-    tildePath(''),
-    '~',
-    'should accept an empty string.'
-  );
-
-  t.end();
-});
-
-test('tildePath() on a non-Windows environment', t => {
-  pretendPlatform('win32');
-
-  t.equal(
-    tildePath('foo'),
-    win32.resolve('foo'),
-    'should make a given path absolute without using tilde.'
   );
 
   t.end();
