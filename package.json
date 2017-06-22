@@ -1,6 +1,6 @@
 {
   "name": "tilde-path",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Resolve a path into an absolute path, using tilde (~) if possible",
   "repository": "shinnn/tilde-path",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
