@@ -10,13 +10,13 @@ const tildePath = require('.');
 test('tildePath()', t => {
 	t.throws(
 		() => tildePath(123),
-		/^TypeError.*Path must be a string. Received 123/,
+		/ERR_INVALID_ARG_TYPE.*The "path" argument must be of type string/,
 		'should throw a type error when it takes a non-string argument.'
 	);
 
 	t.throws(
 		() => tildePath(),
-		/^TypeError.*Path must be a string. Received undefined/,
+		/ERR_INVALID_ARG_TYPE.*The "path" argument must be of type string/,
 		'should throw a type error when it takes no arguments.'
 	);
 
