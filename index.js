@@ -1,18 +1,21 @@
 'use strict';
 
-const homedir = require('os').homedir;
-const pathLib = require('path');
+const {homedir} = require('os');
+const {win32: {resolve: win32Resolve}, posix: {resolve: posixResolve}} = require('path');
 
-const win32Resolve = pathLib.win32.resolve;
-const posixResolve = pathLib.posix.resolve;
+module.exports = function tildePath(...args) {
+	const argLen = args.length;
 
-module.exports = function tildePath(path) {
+	if (argLen !== 1) {
+		throw new RangeError(`Expected 1 argument (<string>), but got ${argLen || 'no'} arguments.`);
+	}
+
 	if (process.platform === 'win32') {
-		return win32Resolve(path);
+		return win32Resolve(args[0]);
 	}
 
 	const home = homedir();
-	path = posixResolve(path);
+	const path = posixResolve(args[0]);
 
 	if (path === home) {
 		return '~';

@@ -16,8 +16,14 @@ test('tildePath()', t => {
 
 	t.throws(
 		() => tildePath(),
-		/ERR_INVALID_ARG_TYPE.*The "path" argument must be of type string/,
+		/^RangeError.*Expected 1 argument \(<string>\), but got no arguments\./,
 		'should throw a type error when it takes no arguments.'
+	);
+
+	t.throws(
+		() => tildePath('', ''),
+		/^RangeError.*Expected 1 argument \(<string>\), but got 2 arguments\./,
+		'should throw a type error when it takes too many arguments.'
 	);
 
 	t.end();
