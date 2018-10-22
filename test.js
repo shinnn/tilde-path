@@ -10,19 +10,19 @@ const tildePath = require('.');
 test('tildePath()', t => {
 	t.throws(
 		() => tildePath(123),
-		/ERR_INVALID_ARG_TYPE.*The "path" argument must be of type string/,
+		/ERR_INVALID_ARG_TYPE.*The "path" argument must be of type string/u,
 		'should throw a type error when it takes a non-string argument.'
 	);
 
 	t.throws(
 		() => tildePath(),
-		/^RangeError.*Expected 1 argument \(<string>\), but got no arguments\./,
+		/^RangeError.*Expected 1 argument \(<string>\), but got no arguments\./u,
 		'should throw a type error when it takes no arguments.'
 	);
 
 	t.throws(
 		() => tildePath('', ''),
-		/^RangeError.*Expected 1 argument \(<string>\), but got 2 arguments\./,
+		/^RangeError.*Expected 1 argument \(<string>\), but got 2 arguments\./u,
 		'should throw a type error when it takes too many arguments.'
 	);
 
