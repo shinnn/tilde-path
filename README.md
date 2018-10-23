@@ -2,7 +2,6 @@
 
 [![NPM version](https://img.shields.io/npm/v/tilde-path.svg)](https://www.npmjs.com/package/tilde-path)
 [![Build Status](https://travis-ci.org/shinnn/tilde-path.svg?branch=master)](https://travis-ci.org/shinnn/tilde-path)
-[![Build status](https://ci.appveyor.com/api/projects/status/62oanqlwsc3ahwkk?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/tilde-path)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/tilde-path.svg)](https://coveralls.io/r/shinnn/tilde-path)
 
 Resolve a path into an absolute path, using [tilde (`~`)](https://www.gnu.org/software/libc/manual/html_node/Tilde-Expansion.html) if possible
