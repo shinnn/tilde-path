@@ -1,8 +1,8 @@
 # tilde-path
 
-[![NPM version](https://img.shields.io/npm/v/tilde-path.svg)](https://www.npmjs.com/package/tilde-path)
-[![Build Status](https://travis-ci.org/shinnn/tilde-path.svg?branch=master)](https://travis-ci.org/shinnn/tilde-path)
-[![Coverage Status](https://img.shields.io/coveralls/shinnn/tilde-path.svg)](https://coveralls.io/r/shinnn/tilde-path)
+[![npm version](https://img.shields.io/npm/v/tilde-path.svg)](https://www.npmjs.com/package/tilde-path)
+[![Build Status](https://travis-ci.com/shinnn/tilde-path.svg?branch=master)](https://travis-ci.com/shinnn/tilde-path)
+[![codecov](https://codecov.io/gh/shinnn/tilde-path/branch/master/graph/badge.svg)](https://codecov.io/gh/shinnn/tilde-path)
 
 Resolve a path into an absolute path, using [tilde (`~`)](https://www.gnu.org/software/libc/manual/html_node/Tilde-Expansion.html) if possible
 
@@ -17,7 +17,7 @@ tildePath('../'); //=> '~'
 
 ## Installation
 
-[Use npm.](https://docs.npmjs.com/cli/install)
+[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/about-npm/).
 
 ```
 npm install tilde-path
@@ -51,4 +51,4 @@ tildePath('my/dir'); //=> 'C:\\Users\\shinnn\\my\\dir'
 
 ## License
 
-[ISC License](./LICENSE) © 2018 Shinnosuke Watanabe
+[ISC License](./LICENSE) © 2018 - 2019 Shinnosuke Watanabe
